@@ -38,9 +38,9 @@
         <!-- Masthead-->
         <header class="masthead">
             <div class="container">
-                <div class="masthead-subheading">Welcome To My Website</div>
-                <div class="masthead-heading text-uppercase">Hi.! I Am Ashikur Rahaman</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
+                <div class="masthead-subheading">{{ $fetch->title }}</div>
+                <div class="masthead-heading text-uppercase">{{ $fetch->sub_title }}</div>
+                <a class="btn btn-primary btn-xl text-uppercase" href="{{ asset('uploads/files/' . $fetch->resume) }}">Download Resume</a>
             </div>
         </header>
         <!-- Services-->
@@ -242,7 +242,7 @@
             </div>
         </section>
         
-        
+
         <!-- Clients-->
         <div class="py-5">
             <div class="container">

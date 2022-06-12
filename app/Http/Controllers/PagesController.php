@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Main;
 
 class PagesController extends Controller
 {
     public function index_view(){
 
-         return view('pages.index');
+        $fetch = Main::first();
+         return view('pages.index',compact('fetch'));
     }
 }

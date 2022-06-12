@@ -12,8 +12,4 @@ class AdminController extends Controller
     }
 
 
-    public function admin_main(){
-
-        return view ('admin pages.main');
-    }
 }
