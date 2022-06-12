@@ -20,7 +20,8 @@ use App\Http\Controllers\AdminController;
 // });
 
 Route::get('/',[PagesController::class,'index_view']);
-Route::get('/admin', [AdminController::class, 'admin_dashboard']);
+Route::get('/admin/dashboard', [AdminController::class, 'admin_dashboard'])->name('admin.dashboard');
+Route::get('/admin/main', [AdminController::class, 'admin_main'])->name('admin.main');
 
 
 Route::middleware([
