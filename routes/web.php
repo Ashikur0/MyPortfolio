@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MainPagesController;
-
+use App\Http\Controllers\ServicesPagesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,7 +24,9 @@ Route::get('/',[PagesController::class,'index_view']);
 Route::get('/admin/dashboard', [AdminController::class, 'admin_dashboard'])->name('admin.dashboard');
 Route::get('/admin/main', [MainPagesController::class, 'view_main'])->name('admin.main');
 Route::post('/admin/main/', [MainPagesController::class, 'update'])->name('admin.main.update');
-
+Route::get('/admin/services/create', [ServicesPagesController::class, 'create'])->name('admin.services.create');
+Route::post('/admin/services/store', [ServicesPagesController::class, 'store'])->name('admin.services.store');
+Route::get('/admin/services/list', [ServicesPagesController::class, 'view'])->name('admin.services.list');
 
 Route::middleware([
     'auth:sanctum',
