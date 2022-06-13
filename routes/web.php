@@ -27,7 +27,9 @@ Route::post('/admin/main/', [MainPagesController::class, 'update'])->name('admin
 Route::get('/admin/services/create', [ServicesPagesController::class, 'create'])->name('admin.services.create');
 Route::post('/admin/services/store', [ServicesPagesController::class, 'store'])->name('admin.services.store');
 Route::get('/admin/services/list', [ServicesPagesController::class, 'view'])->name('admin.services.list');
-
+Route::get('/admin/services/list/{id}', [ServicesPagesController::class, 'edit'])->name('admin.services.list.edit');
+Route::post('/admin/services/update/{id}', [ServicesPagesController::class, 'update'])->name('admin.services.list.update');
+Route::get('/admin/services/delete/{id}', [ServicesPagesController::class, 'destroy'])->name('admin.services.list.delete');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

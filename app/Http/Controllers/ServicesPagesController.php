@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Service;
 
+
 class ServicesPagesController extends Controller
 {
     /**
@@ -14,7 +15,7 @@ class ServicesPagesController extends Controller
      */
     public function view()
     {
-         $fetch = Service::all();
+         $fetch = Service::Orderby('id','desc')->paginate(5);
 
         return view('admin pages.list',compact('fetch'));
     }
@@ -52,7 +53,7 @@ class ServicesPagesController extends Controller
 
           $insert->save();
 
-          return redirect()->route('admin.services.create')->with('success','Service Created Successfully');
+          return redirect()->route('admin.services.list')->with('success','Service Created Successfully');
 
 
 
@@ -78,7 +79,13 @@ class ServicesPagesController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+      $search = Service::find($id);
+
+      return view ('admin pages.edit_list',compact('search'));
+
+     
+
     }
 
     /**
@@ -90,7 +97,25 @@ class ServicesPagesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       
+        $this -> validate($request,[
+
+            'icon' => 'required|string',
+            'title' => 'required|string',
+            'description' => 'required|string',
+  
+          ]) ;
+  
+          $update =Service::find($id);
+          $update->icon = $request->icon;
+          $update->title = $request->title;
+          $update->description = $request->description;
+
+          $update->save();
+
+          return redirect()->route('admin.services.list')->with('success','Service Updated Successfully');
+
+
     }
 
     /**
@@ -101,6 +126,12 @@ class ServicesPagesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        $delete = Service::find($id);
+        $delete ->delete();
+
+        return redirect()->route('admin.services.list')->with('success','Service Deleted Successfully');
+
+
     }
 }
