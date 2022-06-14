@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Main;
 use App\Models\Service;
+use App\Models\Project;
 
 
 class PagesController extends Controller
@@ -13,6 +14,8 @@ class PagesController extends Controller
 
         $fetch = Main::first();
         $lists = Service::all();
-         return view('pages.index',compact('fetch','lists'));
+        $plists = Project::all();
+
+         return view('pages.index',compact('fetch','lists','plists'));
     }
 }

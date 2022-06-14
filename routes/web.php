@@ -5,6 +5,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MainPagesController;
 use App\Http\Controllers\ServicesPagesController;
+use App\Http\Controllers\ProjectsPagesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,15 +22,25 @@ use App\Http\Controllers\ServicesPagesController;
 // });
 
 Route::get('/',[PagesController::class,'index_view']);
-Route::get('/admin/dashboard', [AdminController::class, 'admin_dashboard'])->name('admin.dashboard');
-Route::get('/admin/main', [MainPagesController::class, 'view_main'])->name('admin.main');
-Route::post('/admin/main/', [MainPagesController::class, 'update'])->name('admin.main.update');
-Route::get('/admin/services/create', [ServicesPagesController::class, 'create'])->name('admin.services.create');
-Route::post('/admin/services/store', [ServicesPagesController::class, 'store'])->name('admin.services.store');
-Route::get('/admin/services/list', [ServicesPagesController::class, 'view'])->name('admin.services.list');
-Route::get('/admin/services/list/{id}', [ServicesPagesController::class, 'edit'])->name('admin.services.list.edit');
-Route::post('/admin/services/update/{id}', [ServicesPagesController::class, 'update'])->name('admin.services.list.update');
-Route::get('/admin/services/delete/{id}', [ServicesPagesController::class, 'destroy'])->name('admin.services.list.delete');
+
+Route::prefix('admin')->group(function(){
+
+    Route::get('/', [AdminController::class, 'admin_dashboard'])->name('admin.dashboard');
+    Route::get('/main', [MainPagesController::class, 'view_main'])->name('admin.main');
+    Route::post('/main/', [MainPagesController::class, 'update'])->name('admin.main.update');
+    Route::get('/services/create', [ServicesPagesController::class, 'create'])->name('admin.services.create');
+    Route::post('/services/store', [ServicesPagesController::class, 'store'])->name('admin.services.store');
+    Route::get('/services/list', [ServicesPagesController::class, 'view'])->name('admin.services.list');
+    Route::get('/services/list/{id}', [ServicesPagesController::class, 'edit'])->name('admin.services.list.edit');
+    Route::post('/services/update/{id}', [ServicesPagesController::class, 'update'])->name('admin.services.list.update');
+    Route::get('/services/delete/{id}', [ServicesPagesController::class, 'destroy'])->name('admin.services.list.delete');
+    Route::get('/projects/create', [ProjectsPagesController::class, 'create'])->name('admin.projects.create');
+    Route::post('/projects/store', [ProjectsPagesController::class, 'store'])->name('admin.projects.store');
+    //Route::get('product_detail/{id}', [ProjectsPagesController::class, 'project_detail'])->name('detail');
+
+});
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

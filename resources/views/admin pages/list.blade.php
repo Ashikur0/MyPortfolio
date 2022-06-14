@@ -3,10 +3,10 @@
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">List of Services</h1>
+            <h1 class="mt-4">List of Area Of Expertise</h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item active">List of Services</li>
+                <li class="breadcrumb-item active">List of AOE</li>
             </ol>
 
             <div class="table-responsive">
