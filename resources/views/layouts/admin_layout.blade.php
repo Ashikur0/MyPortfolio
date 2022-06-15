@@ -98,7 +98,7 @@
                                     Create Projects
                                 </a>
 
-                                <a class="nav-link" href="">
+                                <a class="nav-link" href="{{ route('admin.projects.list') }}">
                                     <div class="sb-nav-link-icon"><i class="fa-solid fa-list"></i></div>
                                     List Projects
                                 </a>

@@ -16,6 +16,9 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -92,34 +95,35 @@
                         <div class="col-lg-4 col-sm-6 mb-4">
                             <!-- Project item-->
                             <div class="project-item">
-                                <a class="project-link" data-bs-toggle="modal" href="#projectModal<?php echo $project->id?>">
-                                    <div class="project-hover">
-                                        <div class="project-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                    </div>
-                                    <img class="img-fluid" src="{{ asset('uploads/images/' . $project->pimage) }}"
-                                        . alt="..." />
-                                </a>
-                                <div class="project-caption">
-                                    <div class="project-caption-heading">{{ $project->pname }}</div>
-                                    <div class="project-caption-subheading text-muted"></div>
-                                </div>
+                                <a class="project-link" data-bs-toggle="modal" href="#projectModal"
+                                    data-id={{ $project->id }} ">
+                                    <div class=" project-hover">
+                                    <div class="project-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" class="img-thumbnail" src="{{ asset('uploads/images/' . $project->pimage) }}" .
+                             alt="..." />
+                            </a>
+                            <div class="project-caption">
+                                <div class="project-caption-heading">{{ $project->pname }}</div>
+                                <div class="project-caption-subheading text-muted"></div>
                             </div>
                         </div>
-                    @endforeach
-
-                @endif
-
-
-
-
-
             </div>
+            @endforeach
+
+            @endif
+
+
+
+
+
+        </div>
         </div>
     </section>
 
     <!-- Project Modals-->
     <!-- Project modal popup-->
-    <div class="project-modal modal fade" id="projectModal<?php echo $project->id?>" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="project-modal modal fade" id="projectModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg"
@@ -130,27 +134,28 @@
 
 
 
-
+                           
 
                             <div class="modal-body">
                                 <!-- Project details-->
-                                <h2 class="text-uppercase">{{ $project->pname }}</h2>
+                                <h3 class="text-uppercase" id="project-name"></h3>
                                 <p class="item-intro text-muted"></p>
-                                <img class="img-fluid d-block mx-auto"
-                                    src="{{ asset('uploads/images/' . $project->pimage) }}" alt="..." />
-                                <p>{{ $project->pdescription }}</p>
+
+                                <div id="project-image"></div>
+
+                                <p id="project-description"></p>
 
                                 <ul class="list-inline">
                                     <li>
                                         <strong>Technology Uses:</strong>
-                                        <p>{{ $project->ptechnology }}</p>
+                                        <p id="project-technology"></p>
                                     </li>
 
                                 </ul>
 
                             </div>
 
-
+                           
                         </div>
                     </div>
                 </div>
@@ -361,34 +366,30 @@
         </div>
     </footer>
 
+    <script>
+        $(document).ready(function() {
 
-    {{-- <script>
-        function passprojectid(id) {
+            $('.project-link').click(function() {
 
+                var id = $(this).data('id');
         
-           
+                $.get('/product_detail/' + id, function(data) {
+        
+                    $('#project-name').html(data.pname);
+                    $('#project-description').html(data.pdescription);
+                    $('#project-technology').html(data.ptechnology);
+                    var img = '<img class="img-fluid d-block mx-auto img-thumbnail" src="uploads/images/'+data.pimage+'" alt="..." />';
+                    $('#project-image').html(img);
 
-          
+                      // console.log(data);
+                });
 
-            $.ajax ({
-                url:'product_detail/'+id,
-                type: 'GET',
-                data: {
-                    "id":id
-
-                },
-                success: function(data) {
-                    console.log(data);
-
-                }
-
-            })
-        }
-    </script> --}}
+            });
+        });
+    </script>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    {{-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> --}}
     <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>

@@ -18,4 +18,14 @@ class PagesController extends Controller
 
          return view('pages.index',compact('fetch','lists','plists'));
     }
+
+    public function project_detail($id)
+    {
+        
+       
+        return Project::findorFail($id);
+        //return view('pages.index',compact('modal_data'));
+
+    }
+
 }

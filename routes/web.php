@@ -22,6 +22,7 @@ use App\Http\Controllers\ProjectsPagesController;
 // });
 
 Route::get('/',[PagesController::class,'index_view']);
+Route::get('/product_detail/{id}', [PagesController::class,'project_detail']);
 
 Route::prefix('admin')->group(function(){
 
@@ -36,7 +37,11 @@ Route::prefix('admin')->group(function(){
     Route::get('/services/delete/{id}', [ServicesPagesController::class, 'destroy'])->name('admin.services.list.delete');
     Route::get('/projects/create', [ProjectsPagesController::class, 'create'])->name('admin.projects.create');
     Route::post('/projects/store', [ProjectsPagesController::class, 'store'])->name('admin.projects.store');
-    //Route::get('product_detail/{id}', [ProjectsPagesController::class, 'project_detail'])->name('detail');
+    Route::get('/projects/list', [ProjectsPagesController::class, 'view'])->name('admin.projects.list');
+    Route::get('/projects/edit_project/{id}', [ProjectsPagesController::class, 'edit'])->name('admin.projects.edit_project');
+    Route::post('/projects/update_project/{id}', [ProjectsPagesController::class, 'update'])->name('admin.projects.update_project');
+    Route::get('/projects/delete_project/{id}', [ProjectsPagesController::class, 'destroy'])->name('admin.projects.delete_project');
+    
 
 });
 

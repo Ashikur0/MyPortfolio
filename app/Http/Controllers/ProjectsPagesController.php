@@ -14,9 +14,11 @@ class ProjectsPagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function view()
     {
-        //
+
+        $fetch_projects = Project::Orderby('id','desc')->paginate(5);
+        return view ('admin pages.list_project',compact('fetch_projects'));
     }
 
     /**
@@ -75,12 +77,7 @@ class ProjectsPagesController extends Controller
 
     }
 
-    public function project_detail($id)
-    {
-        
-        return Project::findorFail($id);
 
-    }
 
     /**
      * Display the specified resource.
@@ -101,7 +98,11 @@ class ProjectsPagesController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+        $fetch = Project::find($id);
+
+       return view ('admin pages.edit_project',compact('fetch'));
+
     }
 
     /**
@@ -113,7 +114,42 @@ class ProjectsPagesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $this -> validate($request,[
+            'pname' => 'required|string',
+            'pdescription' => 'required|string',
+            'ptechnology' => 'required|string',
+            'pimage' => 'required|mimes:png,jpg,jpeg,gif',
+          ]) ;
+
+          $update_project =Project::find($id);
+
+          $update_project->pname =$request->pname;
+          $update_project->pdescription =$request->pdescription;
+          $update_project->ptechnology =$request->ptechnology;
+
+          if($request->hasfile('pimage'))
+        {
+        $destination = 'uploads/images'.$update_project->pimage;
+        if( File::exists($destination))
+            {
+                File::delete($destination);
+            }
+
+             $file = $request->file('pimage');
+             $name = $file->getClientOriginalName();
+             //$filename = time().'.'.$extention;
+             $file->move('uploads/images',$name);
+            
+             $update_project->pimage = $name;
+         }
+
+         $update_project->save();
+
+         return redirect()->route('admin.projects.list')->with('success','Project Edited Successfully');
+
+
+
     }
 
     /**
@@ -124,6 +160,12 @@ class ProjectsPagesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = Project::find($id);
+        $delete->delete();
+
+        return redirect()->route('admin.projects.list')->with('success','Project Deleted Successfully');
+
+
+
     }
 }
