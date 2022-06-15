@@ -24,6 +24,7 @@ use App\Http\Controllers\ProjectsPagesController;
 Route::get('/',[PagesController::class,'index_view']);
 Route::get('/product_detail/{id}', [PagesController::class,'project_detail']);
 
+
 Route::prefix('admin')->group(function(){
 
     Route::get('/', [AdminController::class, 'admin_dashboard'])->name('admin.dashboard');

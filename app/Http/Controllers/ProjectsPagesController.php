@@ -72,7 +72,7 @@ class ProjectsPagesController extends Controller
 
          $insert ->save();
 
-         return redirect()->route('admin.projects.create')->with('success','Project Created Successfully');
+         return redirect()->route('admin.projects.list')->with('success','Project Created Successfully');
 
 
     }

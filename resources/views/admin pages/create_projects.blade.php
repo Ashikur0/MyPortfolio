@@ -3,7 +3,7 @@
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Crate Projects</h1>
+            <h1 class="mt-4">Create Projects</h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                 <li class="breadcrumb-item active">Create Projects</li>
@@ -25,7 +25,7 @@
 
                         <div class="mt-3">
                             <label for="pdescription">
-                                <h4>Description</h4>
+                                <h4>Functionality</h4>
                             </label>
                             <textarea type="text" class="form-control" id="pdescription" name="pdescription"></textarea>
 
@@ -33,7 +33,7 @@
 
                         <div class="mt-3">
                             <label for="technology">
-                                <h4>Uses Technology</h4>
+                                <h4>Development Tools</h4>
                             </label>
                             <textarea type="text" class="form-control" id="ptechnology" name="ptechnology"></textarea>
 

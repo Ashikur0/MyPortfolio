@@ -143,11 +143,12 @@
 
                                 <div id="project-image"></div>
 
+                                <strong>Functionality:</strong>
                                 <p id="project-description"></p>
 
                                 <ul class="list-inline">
                                     <li>
-                                        <strong>Technology Uses:</strong>
+                                        <strong>Development Tools:</strong>
                                         <p id="project-technology"></p>
                                     </li>
 
