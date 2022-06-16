@@ -10,6 +10,11 @@
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
@@ -25,7 +30,8 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            {{-- <a class="navbar-brand" href="#page-top"><img src="assets/img/navbar-logo.svg" alt="..." /></a> --}}
+            <a class="navbar-brand" href="#page-top"><img src="{{ asset('uploads/images/logo.png') }}"
+                    alt="..." /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 
@@ -35,8 +41,8 @@
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="#AOE">Area Of Expertise</a></li>
                     <li class="nav-item"><a class="nav-link" href="#project">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#WE">Work Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact Me</a></li>
                 </ul>
             </div>
         </div>
@@ -50,7 +56,8 @@
                 href="{{ asset('uploads/files/' . $fetch->resume) }}">Download Resume</a>
         </div>
     </header>
-    <!-- Services-->
+
+    <!-- Area Of Experience-->
     <section class="page-section" id="AOE">
         <div class="container">
             <div class="text-center">
@@ -97,11 +104,11 @@
                             <div class="project-item">
                                 <a class="project-link" data-bs-toggle="modal" href="#projectModal"
                                     data-id={{ $project->id }} ">
-                                    <div class=" project-hover">
+                                    <div class="       project-hover">
                                     <div class="project-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" class="img-thumbnail" src="{{ asset('uploads/images/' . $project->pimage) }}" .
-                             alt="..." />
+                            <img class="img-fluid" class="img-thumbnail"
+                                src="{{ asset('uploads/images/' . $project->pimage) }}" . alt="..." />
                             </a>
                             <div class="project-caption">
                                 <div class="project-caption-heading">{{ $project->pname }}</div>
@@ -112,11 +119,6 @@
             @endforeach
 
             @endif
-
-
-
-
-
         </div>
         </div>
     </section>
@@ -134,7 +136,7 @@
 
 
 
-                           
+
 
                             <div class="modal-body">
                                 <!-- Project details-->
@@ -155,8 +157,6 @@
                                 </ul>
 
                             </div>
-
-                           
                         </div>
                     </div>
                 </div>
@@ -166,91 +166,59 @@
 
 
 
-    <!-- About-->
-    <section class="page-section" id="about">
+    <!-- Work Experience-->
+    <section class="page-section" id="WE">
         <div class="container">
             <div class="text-center">
-                <h2 class="section-heading text-uppercase">About</h2>
-                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                <h2 class="section-heading text-uppercase">Work Experiences</h2>
+                <h3 class="section-subheading text-muted"></h3>
             </div>
-            <ul class="timeline">
-                <li>
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/1.jpg"
-                            alt="..." /></div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h4>2009-2011</h4>
-                            <h4 class="subheading">Our Humble Beginnings</h4>
-                        </div>
-                        <div class="timeline-body">
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut
-                                voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero
-                                unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                        </div>
-                    </div>
-                </li>
-                <li class="timeline-inverted">
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/2.jpg"
-                            alt="..." /></div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h4>March 2011</h4>
-                            <h4 class="subheading">An Agency is Born</h4>
-                        </div>
-                        <div class="timeline-body">
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut
-                                voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero
-                                unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/3.jpg"
-                            alt="..." /></div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h4>December 2015</h4>
-                            <h4 class="subheading">Transition to Full Service</h4>
-                        </div>
-                        <div class="timeline-body">
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut
-                                voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero
-                                unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                        </div>
-                    </div>
-                </li>
-                <li class="timeline-inverted">
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.jpg"
-                            alt="..." /></div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h4>July 2020</h4>
-                            <h4 class="subheading">Phase Two Expansion</h4>
-                        </div>
-                        <div class="timeline-body">
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut
-                                voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero
-                                unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                        </div>
-                    </div>
-                </li>
-                <li class="timeline-inverted">
-                    <div class="timeline-image">
-                        <h4>
-                            Be Part
-                            <br />
-                            Of Our
-                            <br />
-                            Story!
-                        </h4>
-                    </div>
-                </li>
-            </ul>
+            @if (count($elists) > 0)
+                @foreach ($elists as $value => $experience)
+                    <ul class="timeline">
+
+                        @if (($value + 1) % 2 == 0)
+                            <li class="timeline-inverted">
+                                <div class="timeline-image"><img class="timeline-image rounded-circle z-depth-2"
+                                        src="{{ asset('uploads/logos/' . $experience->company_logo) }}" alt="..." />
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h3>{{ $experience->company_name }}</h3>
+                                        <h6>{{ $experience->position }}</h6>
+                                        <h6 class="subheading">{{ $experience->period }}</h6>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p class="text-muted">{{ $experience->jdescription }}</p>
+                                    </div>
+                                </div>
+                            </li>
+                        @else
+                            <li>
+                                <div class="timeline-image"><img class="timeline-image rounded-circle z-depth-2"
+                                        src="{{ asset('uploads/logos/' . $experience->company_logo) }}" alt="..." />
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h3>{{ $experience->company_name }}</h3>
+                                        <h6>{{ $experience->position }}</h6>
+                                        <h6 class="subheading">{{ $experience->period }}</h6>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p class="text-muted">{{ $experience->jdescription }}</p>
+                                    </div>
+                                </div>
+                            </li>
+                        @endif
+
+                    </ul>
+                @endforeach
+            @endif
+
         </div>
     </section>
 
-
-    <!-- Clients-->
+    {{-- <!-- Clients-->
     <div class="py-5">
         <div class="container">
             <div class="row align-items-center">
@@ -272,96 +240,106 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
+
     <!-- Contact-->
     <section class="page-section" id="contact">
         <div class="container">
             <div class="text-center">
-                <h2 class="section-heading text-uppercase">Contact Us</h2>
-                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                <h2 class="section-heading text-uppercase">Contact Me</h2>
             </div>
-            <!-- * * * * * * * * * * * * * * *-->
-            <!-- * * SB Forms Contact Form * *-->
-            <!-- * * * * * * * * * * * * * * *-->
-            <!-- This form is pre-integrated with SB Forms.-->
-            <!-- To make this form functional, sign up at-->
-            <!-- https://startbootstrap.com/solution/contact-forms-->
-            <!-- to get an API token!-->
-            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                <div class="row align-items-stretch mb-5">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <!-- Name input-->
-                            <input class="form-control" id="name" type="text" placeholder="Your Name *"
-                                data-sb-validations="required" />
-                            <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                        </div>
-                        <div class="form-group">
-                            <!-- Email address input-->
-                            <input class="form-control" id="email" type="email" placeholder="Your Email *"
-                                data-sb-validations="required,email" />
-                            <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                            <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                        </div>
-                        <div class="form-group mb-md-0">
-                            <!-- Phone number input-->
-                            <input class="form-control" id="phone" type="tel" placeholder="Your Phone *"
-                                data-sb-validations="required" />
-                            <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="card text-center mt-3" style="max-width: 500px; height:260px;">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="{{ asset('uploads/logos/Ashikur_rahaman.jpg') }}"
+                                    class="img-fluid rounded-circle" style="max-width: 500px; height:260px;" alt="...">
+                            </div>
+                            <div class="col-md-8 mt-2">
+                                <div class="card-body">
+                                    
+                                    <h3 class="card-title">Ashikur Rahaman</h3>
+                                    <p class="card-text mb-2">Engineer (Core Technical & Billing Dept.)</p>
+                                    <p class="card-text mb-2"><strong>Platinum Communications Limited</strong></p>
+                                    <p class="card-text mb-2"><strong>Email :</strong> ashikur.rahaman@platinumgw.com</p>
+                                    
+                                   
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group form-group-textarea mb-md-0">
-                            <!-- Message input-->
-                            <textarea class="form-control" id="message" placeholder="Your Message *" data-sb-validations="required"></textarea>
-                            <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.
+
+                </div>
+
+                <div class="col-md-6 mt-3">
+                    <form action="#" method="post" id="contactForm">
+
+                        <div class="row align-items-stretch mb-5">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <!-- Name input-->
+                                    <input class="form-control" id="name" type="text" placeholder="Your Name *"
+                                        required/>
+                                   
+                                </div>
+                                <div class="form-group">
+                                    <!-- Email address input-->
+                                    <input class="form-control" id="email" type="email" placeholder="Your Email *"
+                                       required />
+                                </div>
+                                <div class="form-group mb-md-0">
+                                    <!-- Phone number input-->
+                                    <input class="form-control" id="phone" type="tel" placeholder="Your Phone *"
+                                        required />
+ 
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-group-textarea mb-md-0">
+                                    <!-- Message input-->
+                                    <textarea class="form-control" id="message" placeholder="Your Message *" required></textarea>
+                                    
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <!-- Submit Button-->
+                        <div class="text-center">
+                            <button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">Send
+                                Message</button>
+                        </div>
+                    </form>
+
+
                 </div>
-                <!-- Submit success message-->
-                <!---->
-                <!-- This is what your users will see when the form-->
-                <!-- has successfully submitted-->
-                <div class="d-none" id="submitSuccessMessage">
-                    <div class="text-center text-white mb-3">
-                        <div class="fw-bolder">Form submission successful!</div>
-                        To activate this form, sign up at
-                        <br />
-                        <a
-                            href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                    </div>
-                </div>
-                <!-- Submit error message-->
-                <!---->
-                <!-- This is what your users will see when there is-->
-                <!-- an error submitting the form-->
-                <div class="d-none" id="submitErrorMessage">
-                    <div class="text-center text-danger mb-3">Error sending message!</div>
-                </div>
-                <!-- Submit Button-->
-                <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled"
-                        id="submitButton" type="submit">Send Message</button></div>
-            </form>
+
+
+
+            </div>
+
         </div>
     </section>
     <!-- Footer-->
     <footer class="footer py-4">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2022</div>
+                <div class="col-lg-4 text-lg-start">Copyright &copy; <strong>Ashikur Rahaman</strong></div>
                 <div class="col-lg-4 my-3 my-lg-0">
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i
-                            class="fab fa-twitter"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i
+                    {{-- <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i
+                            class="fab fa-twitter"></i></a> --}}
+                    <a class="btn btn-dark btn-social mx-2"
+                        href="https://www.facebook.com/profile.php?id=100008256289270" aria-label="Facebook"><i
                             class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i
+                    <a class="btn btn-dark btn-social mx-2"
+                        href="https://www.linkedin.com/in/ashikur-rahaman-a9914b184" aria-label="LinkedIn"><i
                             class="fab fa-linkedin-in"></i></a>
                 </div>
                 <div class="col-lg-4 text-lg-end">
-                    <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
-                    <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+                    {{-- <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
+                    <a class="link-dark text-decoration-none" href="#!">Terms of Use</a> --}}
                 </div>
             </div>
         </div>
@@ -373,26 +351,27 @@
             $('.project-link').click(function() {
 
                 var id = $(this).data('id');
-        
+
                 $.get('/product_detail/' + id, function(data) {
-        
+
                     $('#project-name').html(data.pname);
                     $('#project-description').html(data.pdescription);
                     $('#project-technology').html(data.ptechnology);
-                    var img = '<img class="img-fluid d-block mx-auto img-thumbnail" src="uploads/images/'+data.pimage+'" alt="..." />';
+                    var img =
+                        '<img class="img-fluid d-block mx-auto img-thumbnail" src="uploads/images/' +
+                        data.pimage + '" alt="..." />';
                     $('#project-image').html(img);
 
-                      // console.log(data);
+                    // console.log(data);
                 });
 
             });
         });
     </script>
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
-    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
 </body>
 
 </html>

@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MainPagesController;
 use App\Http\Controllers\ServicesPagesController;
 use App\Http\Controllers\ProjectsPagesController;
+use App\Http\Controllers\ExperiencesPagesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,7 +43,12 @@ Route::prefix('admin')->group(function(){
     Route::get('/projects/edit_project/{id}', [ProjectsPagesController::class, 'edit'])->name('admin.projects.edit_project');
     Route::post('/projects/update_project/{id}', [ProjectsPagesController::class, 'update'])->name('admin.projects.update_project');
     Route::get('/projects/delete_project/{id}', [ProjectsPagesController::class, 'destroy'])->name('admin.projects.delete_project');
-    
+    Route::get('/experiences/add', [ExperiencesPagesController::class, 'create'])->name('admin.experiences.add');
+    Route::post('/experiences/store', [ExperiencesPagesController::class, 'store'])->name('admin.experiences.store');
+    Route::get('/experiences/list', [ExperiencesPagesController::class, 'view'])->name('admin.experiences.list');
+    Route::get('/experiences/edit_experience/{id}', [ExperiencesPagesController::class, 'edit'])->name('admin.experiences.edit_experience');
+    Route::post('/experiences/update_experiences/{id}', [ExperiencesPagesController::class, 'update'])->name('admin.experiences.update_experience');
+    Route::get('/experiences/delete/{id}', [ExperiencesPagesController::class, 'destroy'])->name('admin.experiences.delete_experience');
 
 });
 
