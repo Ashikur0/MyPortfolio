@@ -351,7 +351,7 @@
     <footer class="footer py-4">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-4 text-lg-start">Copyright &copy; <strong>Ashikur Rahaman</strong></div>
+                <div class="col-lg-4 text-lg-start"><strong>Copyright &copy; Developed By <a href="https://www.linkedin.com/in/ashikur-rahaman-a9914b184">Ashikur Rahaman</a></strong></div>
                 <div class="col-lg-4 my-3 my-lg-0">
                     {{-- <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i
                             class="fab fa-twitter"></i></a> --}}
