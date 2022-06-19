@@ -23,10 +23,12 @@ use App\Http\Controllers\PersonalInfoPagesController;
 //     return view('welcome');
 // });
 
+//Index Page Route
 Route::get('/',[PagesController::class,'index_view'])->name('myportfolio');
-Route::get('/product_detail/{id}', [PagesController::class,'project_detail']);
+Route::get('/project_detail/{id}', [PagesController::class,'project_detail']);
+Route::post('/feedback/store',[PagesController::class,'store'])->name('feedback.store');
 
-
+//Admin Pages Route
 Route::prefix('admin')->group(function(){
 
     Route::get('/', [AdminController::class, 'admin_dashboard'])->name('admin.dashboard');
@@ -56,6 +58,8 @@ Route::prefix('admin')->group(function(){
     Route::get('/personalinfo/edit_info/{id}', [PersonalInfoPagesController::class, 'edit'])->name('admin.personalinfo.edit_info');
     Route::post('/personalinfo/update_info/{id}', [PersonalInfoPagesController::class, 'update'])->name('admin.personalinfo.update_info');
     Route::get('/personalinfo/delete/{id}', [PersonalInfoPagesController::class, 'destroy'])->name('admin.personalinfo.delete_info');
+
+    Route::get('/view/feedback', [PagesController::class, 'view'])->name('admin.view.feedback');
 
 });
 

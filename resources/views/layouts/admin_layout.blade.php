@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>My Admin</title>
+    <title>My Portfolio</title>
 
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('uploads/images/logo.png') }}" />
     <link href="{{ asset('css/admin_styles.css') }}" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
@@ -17,7 +17,12 @@
 <body>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="#"></a>
+        <a class="navbar-brand ps-3" href="{{ route('admin.dashboard') }}">
+
+        <img src="{{ asset('uploads/images/logo.png') }}" 
+         style="height: 30px; width:125px" alt="..." /></a>
+
+        </a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
@@ -26,14 +31,15 @@
             <div class="input-group">
                 <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
                     aria-describedby="btnNavbarSearch" />
-                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i
+                        class="fas fa-search"></i></button>
             </div>
         </form>
         <!-- Navbar-->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#!">Settings</a></li>
                     <li><a class="dropdown-item" href="#!">Activity Log</a></li>
@@ -140,21 +146,27 @@
 
 
                         <div class="collapse" id="collapseLayouts4" aria-labelledby="headingOne"
-                        data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
 
-                            <a class="nav-link" href="{{ route('admin.personalinfo.add') }}">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-plus"></i></div>
-                                Add Personal Info
-                            </a>
+                                <a class="nav-link" href="{{ route('admin.personalinfo.add') }}">
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-plus"></i></div>
+                                    Add Personal Info
+                                </a>
 
-                            <a class="nav-link" href="{{ route('admin.personalinfo.list') }}">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-list"></i></div>
-                                List Personal Info
-                            </a>
+                                <a class="nav-link" href="{{ route('admin.personalinfo.list') }}">
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-list"></i></div>
+                                    List Personal Info
+                                </a>
 
-                        </nav>
-                    </div>
+                            </nav>
+                        </div>
+
+                        <a class="nav-link collapsed" href="{{ route('admin.view.feedback') }}" >
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-message"></i></div>
+                        View Feedback
+                       
+                    </a>
 
                     </div>
                 </div>

@@ -15,7 +15,7 @@ class PersonalInfoPagesController extends Controller
      */
     public function view()
     {
-        $fetch_personalinfo=PersonalInfo::Orderby('id','desc')->paginate(5);;
+        $fetch_personalinfo=PersonalInfo::Orderby('id','desc')->paginate(5);
 
         return view('admin pages.list_personalinfo',compact('fetch_personalinfo'));
 

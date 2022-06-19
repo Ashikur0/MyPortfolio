@@ -8,7 +8,7 @@
     <meta name="author" content="" />
     <title>My Portfolio</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('uploads/images/logo.png') }}" />
     <!-- Font Awesome icons (free version)-->
 
     <!-- Bootstrap CSS -->
@@ -30,8 +30,8 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('myportfolio') }}"><img src="{{ asset('uploads/images/logo.png') }}"
-                    alt="..." /></a>
+            <a class="navbar-brand" href="{{ route('myportfolio') }}"><img
+                    src="{{ asset('uploads/images/logo.png') }}" alt="..." /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 
@@ -51,7 +51,7 @@
     <header class="masthead">
         <div class="container">
             <div class="masthead-subheading">{{ $fetch->title }}</div>
-            <div class="masthead-heading text-uppercase">{{ $fetch->sub_title }}</div>
+            <div class="masthead-heading text-uppercase"><span class="type-effect"></span></div>
             <a class="btn btn-primary btn-xl text-uppercase"
                 href="{{ asset('uploads/files/' . $fetch->resume) }}">Download Resume</a>
         </div>
@@ -116,10 +116,10 @@
                             </div>
                         </div>
             </div>
-            @endforeach
+ @endforeach
 
-            @endif
-        </div>
+                    @endif
+            </div>
         </div>
     </section>
 
@@ -180,7 +180,8 @@
                         @if (($value + 1) % 2 == 0)
                             <li class="timeline-inverted">
                                 <div class="timeline-image"><img class="timeline-image rounded-circle z-depth-2"
-                                        src="{{ asset('uploads/logos/' . $experience->company_logo) }}" alt="..." />
+                                        src="{{ asset('uploads/logos/' . $experience->company_logo) }}"
+                                        alt="..." />
                                 </div>
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
@@ -196,7 +197,8 @@
                         @else
                             <li>
                                 <div class="timeline-image"><img class="timeline-image rounded-circle z-depth-2"
-                                        src="{{ asset('uploads/logos/' . $experience->company_logo) }}" alt="..." />
+                                        src="{{ asset('uploads/logos/' . $experience->company_logo) }}"
+                                        alt="..." />
                                 </div>
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
@@ -242,21 +244,28 @@
         </div>
     </div> --}}
 
+
     <!-- Contact-->
     <section class="page-section" id="contact">
         <div class="container">
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Contact Me</h2>
+
+                 <!-- FeedBack Message-->
+                <div class="row">
+                   
+                    @include('alert.message');
+                </div>
+
             </div>
 
             <div class="row">
 
-                @if (count($personal_info) >0)
+                @if (count($personal_info) > 0)
 
-                @foreach ($personal_info as $personal_info)
-                    
-                @endforeach
-                    
+                    @foreach ($personal_info as $personal_info)
+                    @endforeach
+
                 @endif
 
                 <div class="col-md-6">
@@ -264,19 +273,22 @@
                     <div class="card text-center mt-3" style="max-width: 600px; height:250px;">
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="{{ asset('uploads/images/'. $personal_info->image) }}"
-                                    class="img-fluid rounded-circle" style="max-width: 500px; height:240px;" alt="...">
+                                <img src="{{ asset('uploads/images/' . $personal_info->image) }}"
+                                    class="img-fluid rounded-circle" style="max-width: 500px; height:240px;"
+                                    alt="...">
                             </div>
                             <div class="col-md-8 mt-4">
                                 <div class="card-body">
-                                    
+
                                     <h3 class="card-title">{{ $personal_info->name }}</h3>
                                     <p class="card-text mb-2">{{ $personal_info->designation }}</p>
-                                    <p class="card-text mb-2"><strong>{{ $personal_info->company}}</strong></p>
-                                    <p class="card-text mb-2"><i class="fa-solid fa-envelope" style="margin-right:10px" ></i>{{ $personal_info->email }}</p>
-                                    <p class="card-text mb-2"><i class="fa-solid fa-id-badge"></i> +88  {{ $personal_info->contact }}</p>
-                                    
-                                   
+                                    <p class="card-text mb-2"><strong>{{ $personal_info->company }}</strong></p>
+                                    <p class="card-text mb-2"><i class="fa-solid fa-envelope"
+                                            style="margin-right:10px"></i>{{ $personal_info->email }}</p>
+                                    <p class="card-text mb-2"><i class="fa-solid fa-id-badge"></i> +88
+                                        {{ $personal_info->contact }}</p>
+
+
                                 </div>
                             </div>
                         </div>
@@ -285,39 +297,42 @@
                 </div>
 
                 <div class="col-md-6 mt-3">
-                    <form action="#" method="post" id="contactForm">
+
+                    <form action="{{ route('feedback.store') }}" method="POST" id="contactForm">
+                        @csrf
 
                         <div class="row align-items-stretch mb-5">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <!-- Name input-->
-                                    <input class="form-control" id="name" type="text" placeholder="Your Name *"
-                                        required/>
-                                   
+                                    <input class="form-control" name="name" id="name" type="text"
+                                        placeholder="Your Name *" required />
+
                                 </div>
                                 <div class="form-group">
                                     <!-- Email address input-->
-                                    <input class="form-control" id="email" type="email" placeholder="Your Email *"
-                                       required />
+                                    <input class="form-control" name="email" id="email" type="email"
+                                        placeholder="Your Email *" required />
                                 </div>
                                 <div class="form-group mb-md-0">
                                     <!-- Phone number input-->
-                                    <input class="form-control" id="phone" type="tel" placeholder="Your Phone *"
-                                        required />
- 
+                                    <input class="form-control" name="phone" id="phone" type="tel"
+                                        placeholder="Your Phone *" required />
+
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group form-group-textarea mb-md-0">
                                     <!-- Message input-->
-                                    <textarea class="form-control" id="message" placeholder="Your Message *" required></textarea>
-                                    
+                                    <textarea class="form-control" name="message" id="message" placeholder="Your Message *" required></textarea>
+
                                 </div>
                             </div>
                         </div>
                         <!-- Submit Button-->
                         <div class="text-center">
-                            <button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">Send
+                            <button class="btn btn-primary btn-xl text-uppercase" id="submitButton"
+                                type="submit">Send
                                 Message</button>
                         </div>
                     </form>
@@ -331,6 +346,7 @@
 
         </div>
     </section>
+
     <!-- Footer-->
     <footer class="footer py-4">
         <div class="container">
@@ -339,12 +355,10 @@
                 <div class="col-lg-4 my-3 my-lg-0">
                     {{-- <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i
                             class="fab fa-twitter"></i></a> --}}
-                    <a class="btn btn-dark btn-social mx-2"
-                        href=" {{ $personal_info->facebook }}" aria-label="Facebook"><i
-                            class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2"
-                        href="{{ $personal_info->linkdin }}" aria-label="LinkedIn"><i
-                            class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href=" {{ $personal_info->facebook }}"
+                        aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="{{ $personal_info->linkdin }}"
+                        aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <div class="col-lg-4 text-lg-end">
                     {{-- <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
@@ -361,7 +375,7 @@
 
                 var id = $(this).data('id');
 
-                $.get('/product_detail/' + id, function(data) {
+                $.get('/project_detail/' + id, function(data) {
 
                     $('#project-name').html(data.pname);
                     $('#project-description').html(data.pdescription);
@@ -377,6 +391,20 @@
             });
         });
     </script>
+
+     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+     <script>
+
+         var typed = new Typed(".type-effect",{
+           strings:["{{ $fetch->sub_title }}"],
+           typeSpeed:100,
+           backSpeed:100,
+           loop:true
+         })
+
+     </script>    
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
