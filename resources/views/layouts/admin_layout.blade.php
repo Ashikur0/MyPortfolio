@@ -187,7 +187,7 @@
 
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid" style="text-align: center;">
-                    <div class="text-muted">Copyright &copy;This Website Made by <strong>Ashikur Rahaman</strong>
+                    <div class="text-muted">Copyright &copy;Developed by <strong><a href="https://www.linkedin.com/in/ashikur-rahaman-a9914b184">Ashikur Rahaman</strong></a>
                     </div>
                 </div>
             </footer>
