@@ -30,7 +30,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#page-top"><img src="{{ asset('uploads/images/logo.png') }}"
+            <a class="navbar-brand" href="{{ route('myportfolio') }}"><img src="{{ asset('uploads/images/logo.png') }}"
                     alt="..." /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -251,21 +251,30 @@
 
             <div class="row">
 
+                @if (count($personal_info) >0)
+
+                @foreach ($personal_info as $personal_info)
+                    
+                @endforeach
+                    
+                @endif
+
                 <div class="col-md-6">
 
-                    <div class="card text-center mt-3" style="max-width: 500px; height:260px;">
+                    <div class="card text-center mt-3" style="max-width: 600px; height:250px;">
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="{{ asset('uploads/logos/Ashikur_rahaman.jpg') }}"
-                                    class="img-fluid rounded-circle" style="max-width: 500px; height:260px;" alt="...">
+                                <img src="{{ asset('uploads/images/'. $personal_info->image) }}"
+                                    class="img-fluid rounded-circle" style="max-width: 500px; height:240px;" alt="...">
                             </div>
-                            <div class="col-md-8 mt-2">
+                            <div class="col-md-8 mt-4">
                                 <div class="card-body">
                                     
-                                    <h3 class="card-title">Ashikur Rahaman</h3>
-                                    <p class="card-text mb-2">Engineer (Core Technical & Billing Dept.)</p>
-                                    <p class="card-text mb-2"><strong>Platinum Communications Limited</strong></p>
-                                    <p class="card-text mb-2"><strong>Email :</strong> ashikur.rahaman@platinumgw.com</p>
+                                    <h3 class="card-title">{{ $personal_info->name }}</h3>
+                                    <p class="card-text mb-2">{{ $personal_info->designation }}</p>
+                                    <p class="card-text mb-2"><strong>{{ $personal_info->company}}</strong></p>
+                                    <p class="card-text mb-2"><i class="fa-solid fa-envelope" style="margin-right:10px" ></i>{{ $personal_info->email }}</p>
+                                    <p class="card-text mb-2"><i class="fa-solid fa-id-badge"></i> +88  {{ $personal_info->contact }}</p>
                                     
                                    
                                 </div>
@@ -331,10 +340,10 @@
                     {{-- <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i
                             class="fab fa-twitter"></i></a> --}}
                     <a class="btn btn-dark btn-social mx-2"
-                        href="https://www.facebook.com/profile.php?id=100008256289270" aria-label="Facebook"><i
+                        href=" {{ $personal_info->facebook }}" aria-label="Facebook"><i
                             class="fab fa-facebook-f"></i></a>
                     <a class="btn btn-dark btn-social mx-2"
-                        href="https://www.linkedin.com/in/ashikur-rahaman-a9914b184" aria-label="LinkedIn"><i
+                        href="{{ $personal_info->linkdin }}" aria-label="LinkedIn"><i
                             class="fab fa-linkedin-in"></i></a>
                 </div>
                 <div class="col-lg-4 text-lg-end">

@@ -7,6 +7,7 @@ use App\Http\Controllers\MainPagesController;
 use App\Http\Controllers\ServicesPagesController;
 use App\Http\Controllers\ProjectsPagesController;
 use App\Http\Controllers\ExperiencesPagesController;
+use App\Http\Controllers\PersonalInfoPagesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +23,7 @@ use App\Http\Controllers\ExperiencesPagesController;
 //     return view('welcome');
 // });
 
-Route::get('/',[PagesController::class,'index_view']);
+Route::get('/',[PagesController::class,'index_view'])->name('myportfolio');
 Route::get('/product_detail/{id}', [PagesController::class,'project_detail']);
 
 
@@ -49,6 +50,12 @@ Route::prefix('admin')->group(function(){
     Route::get('/experiences/edit_experience/{id}', [ExperiencesPagesController::class, 'edit'])->name('admin.experiences.edit_experience');
     Route::post('/experiences/update_experiences/{id}', [ExperiencesPagesController::class, 'update'])->name('admin.experiences.update_experience');
     Route::get('/experiences/delete/{id}', [ExperiencesPagesController::class, 'destroy'])->name('admin.experiences.delete_experience');
+    Route::get('/personalinfo/create', [PersonalInfoPagesController::class, 'create'])->name('admin.personalinfo.add');
+    Route::post('/personalinfo/store', [PersonalInfoPagesController::class, 'store'])->name('admin.personalinfo.store');
+    Route::get('/personalinfo/list', [PersonalInfoPagesController::class, 'view'])->name('admin.personalinfo.list');
+    Route::get('/personalinfo/edit_info/{id}', [PersonalInfoPagesController::class, 'edit'])->name('admin.personalinfo.edit_info');
+    Route::post('/personalinfo/update_info/{id}', [PersonalInfoPagesController::class, 'update'])->name('admin.personalinfo.update_info');
+    Route::get('/personalinfo/delete/{id}', [PersonalInfoPagesController::class, 'destroy'])->name('admin.personalinfo.delete_info');
 
 });
 

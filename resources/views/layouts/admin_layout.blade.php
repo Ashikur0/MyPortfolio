@@ -131,10 +131,30 @@
 
 
 
-                        <a class="nav-link" href="#">
-                            <div class="sb-nav-link-icon"><i class="fas fa-envelope"></i></div>
-                            Contact
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-address-card"></i></div>
+                            Personal Info
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
+
+
+                        <div class="collapse" id="collapseLayouts4" aria-labelledby="headingOne"
+                        data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+
+                            <a class="nav-link" href="{{ route('admin.personalinfo.add') }}">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-plus"></i></div>
+                                Add Personal Info
+                            </a>
+
+                            <a class="nav-link" href="{{ route('admin.personalinfo.list') }}">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-list"></i></div>
+                                List Personal Info
+                            </a>
+
+                        </nav>
+                    </div>
 
                     </div>
                 </div>

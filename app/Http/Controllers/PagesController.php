@@ -7,6 +7,7 @@ use App\Models\Main;
 use App\Models\Service;
 use App\Models\Project;
 use App\Models\Experience;
+use App\Models\PersonalInfo;
 
 
 class PagesController extends Controller
@@ -17,8 +18,9 @@ class PagesController extends Controller
         $lists = Service::all();
         $plists = Project::all();
         $elists = Experience::all();
+        $personal_info = PersonalInfo::all();
 
-         return view('pages.index',compact('fetch','lists','plists','elists'));
+         return view('pages.index',compact('fetch','lists','plists','elists','personal_info'));
     }
 
     public function project_detail($id)
