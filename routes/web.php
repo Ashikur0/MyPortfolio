@@ -19,7 +19,7 @@ use App\Http\Controllers\PersonalInfoPagesController;
 |
 */
 
-// Route::get('/', function () {
+// Route::get('/welcome', function () {
 //     return view('welcome');
 // });
 
@@ -27,6 +27,13 @@ use App\Http\Controllers\PersonalInfoPagesController;
 Route::get('/',[PagesController::class,'index_view'])->name('myportfolio');
 Route::get('/project_detail/{id}', [PagesController::class,'project_detail']);
 Route::post('/feedback/store',[PagesController::class,'store'])->name('feedback.store');
+
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
 
 //Admin Pages Route
 Route::prefix('admin')->group(function(){
@@ -61,15 +68,7 @@ Route::prefix('admin')->group(function(){
 
     Route::get('/view/feedback', [PagesController::class, 'view'])->name('admin.view.feedback');
 
-});
+  });
 
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    
 });

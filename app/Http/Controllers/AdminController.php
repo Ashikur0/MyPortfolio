@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+
 
 use App\Models\Service;
 use App\Models\Project;
@@ -20,6 +23,14 @@ class AdminController extends Controller
 
         return view ('admin pages.dashboard',compact('total_services','total_projects','total_experiences','total_feedbacks'));
     }
+
+
+    // public function logout(){
+
+    //     Session::flush();
+    //     Auth::logout();
+    //     return redirect('/');
+    // }
 
 
 }
